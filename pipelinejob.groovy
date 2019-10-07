@@ -1,6 +1,6 @@
-folder('Folder1')
+folder('Folder1'){
 
-pipelineJob('Folder1/pipeline-job') {
+pipelineJob('pipeline-job') {
   definition {
     cps {
       script('''
@@ -9,7 +9,7 @@ pipelineJob('Folder1/pipeline-job') {
                 stages {
                     stage('Stage 1') {
                         steps {
-                            echo 'logic1'
+                            echo 'logic n'
                         }
                     }
                     stage('Stage 2') {
@@ -24,4 +24,5 @@ pipelineJob('Folder1/pipeline-job') {
       sandbox()     
     }
   }
+}
 }
