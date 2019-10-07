@@ -1,6 +1,6 @@
 folder('Folder1'){
 
-pipelineJob('pipeline-job') {
+pipelineJob('Folder1/pipeline-job') {
   definition {
     cps {
       script('''
