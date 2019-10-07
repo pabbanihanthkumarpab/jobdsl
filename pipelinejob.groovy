@@ -1,7 +1,7 @@
-folder('Folder1'){
+folder('New Folder'){
 
 }
-pipelineJob('Folder1/pipeline-job') {
+pipelineJob("New Folder/pipeline-job") {
   definition {
     cps {
       script('''
