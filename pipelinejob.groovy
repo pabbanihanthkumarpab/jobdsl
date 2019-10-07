@@ -1,5 +1,6 @@
 folder('Folder1'){
 
+}
 pipelineJob('Folder1/pipeline-job') {
   definition {
     cps {
@@ -25,4 +26,4 @@ pipelineJob('Folder1/pipeline-job') {
     }
   }
 }
-}
+
