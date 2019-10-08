@@ -1,6 +1,7 @@
 
 def createPipelineJob( def projectName , def subModuleName , def type){
 
+  println "projectName --> " + projectName;
 String basePath = 'CDAR-DEV/'+projectName;
 
 folder("$basePath")
