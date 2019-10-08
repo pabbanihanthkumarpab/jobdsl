@@ -39,7 +39,7 @@ pipelineJob("$basePath/pipeline-job") {
                 stages {
                     stage('Stage 1') {
                         steps {
-                            echo 'logic new'
+                            echo 'logic new 1'
                         }
                     }
                     stage('Stage 2') {
