@@ -1,7 +1,12 @@
-folder('New_Folder'){
 
-}
-pipelineJob("New_Folder/pipeline-job") {
+def createPipelineJob( def projectName , def subModuleName , def type){
+
+String basePath = 'CDAR-DEV/$projectName'
+
+folder("$basePath")
+
+
+pipelineJob("$basePath/pipeline-job") {
   definition {
     cps {
       script('''
@@ -10,7 +15,7 @@ pipelineJob("New_Folder/pipeline-job") {
                 stages {
                     stage('Stage 1') {
                         steps {
-                            echo 'logic n'
+                            echo 'logic new'
                         }
                     }
                     stage('Stage 2') {
@@ -25,5 +30,6 @@ pipelineJob("New_Folder/pipeline-job") {
       sandbox()     
     }
   }
+}
 }
 
