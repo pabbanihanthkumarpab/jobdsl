@@ -1,7 +1,7 @@
 [
 {
 "projectName": "1bbo-exportprocessing" ,
-"subModules" : "rms-export-processor,rms-factory-output-delivery-processor,rms-factory-output-processor",
+"subModules" : "rms-export-processor,rms-factory-output-delivery-processor,rms-factory-output-processor,rms-bbo-test",
 "type"       : "jar"
 },
 {
