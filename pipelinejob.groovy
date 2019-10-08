@@ -2,11 +2,11 @@
 def createPipelineJob( def projectName , def subModuleName , def type){
 
   println "projectName --> " + projectName;
-String basePath = 'CDAR-DEV/'+projectName;
+String basePath = 'CDAR-DEV/'+projectName+'/'+subModuleName;
 
 folder(basePath)
 
-
+/*
 pipelineJob("$basePath/pipeline-job") {
   definition {
     cps {
@@ -31,6 +31,6 @@ pipelineJob("$basePath/pipeline-job") {
       sandbox()     
     }
   }
-}
+}*/
 }
 
