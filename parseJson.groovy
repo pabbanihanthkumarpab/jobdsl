@@ -1,7 +1,7 @@
     import net.sf.json.groovy.JsonSlurper  
 
     def jsonSlurper = new JsonSlurper();
-    def data = jsonSlurper.parseText(new File("data.json").text);
+    def data = jsonSlurper.parseText(new File("${workspace}/data.json").text);
  
     
     for (int i=0; i < data.size() ; i++ ){
