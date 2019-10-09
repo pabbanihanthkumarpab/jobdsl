@@ -1,18 +1,14 @@
     import net.sf.json.groovy.JsonSlurper 
     import hudson.FilePath
     import hudson.*
+    import JobStructure
    
-
-    
     def jsonSlurper = new JsonSlurper();
     GroovyShell shell = new GroovyShell()
-    evaluate(new File("*.groovy"))
-    
-
+    def js = new JobStructure() 
 //    def data = jsonSlurper.parseText(new File("/var/jenkins_home/data.json").text);
      def data = jsonSlurper.parseText(readFileFromWorkspace("data.json"));
-	    
-	    println data;
+     println data;
        
     
     for (int i=0; i < data.size() ; i++ ){
@@ -24,7 +20,7 @@
         def subProjects = subModules.split(',');
         for  ( int j = 0 ; j<subProjects.size() ; j++){  
 		 
-    		 jobFun.createPipelineJob(projectName,subProjects.getAt(j),type);
+    		 js.createPipelineJob(projectName,subProjects.getAt(j),type);
         }
         
     }
