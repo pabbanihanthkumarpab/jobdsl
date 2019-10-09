@@ -1,9 +1,11 @@
     import net.sf.json.groovy.JsonSlurper 
     import hudson.FilePath
 
+
     def jsonSlurper = new JsonSlurper();
+    println $workspace
     def data = jsonSlurper.parseText(new File("${workspace}/data.json").text);
- 
+       
     
     for (int i=0; i < data.size() ; i++ ){
         iterateEachProject ( data.get(i).projectName ,data.get(i).subModules , data.get(i).type);
