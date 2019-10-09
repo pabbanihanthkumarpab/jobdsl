@@ -3,11 +3,14 @@
     import hudson.*
    
 
-    def jobFun = Load 'pipelinejob.groovy'
+    //def jobFun = Load 'pipelinejob.groovy'
     def jsonSlurper = new JsonSlurper();
+    GroovyShell shell = new GroovyShell()
+    def jobFun = shell.parse(new File('pipelinejob.groovy'))
+   // tools.greet()	    
 
 //    def data = jsonSlurper.parseText(new File("/var/jenkins_home/data.json").text);
-     def data = jsonSlurper.parseText(readFileFromWorkspace("/var/jenkins_home/data.json"));
+     def data = jsonSlurper.parseText(readFileFromWorkspace("data.json"));
 	    
 	    println data;
        
