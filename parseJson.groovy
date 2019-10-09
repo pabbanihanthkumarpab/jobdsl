@@ -38,7 +38,7 @@ folder(basePath)
 pipelineJob("$basePath/pipeline-job") {
   definition {
     cps {
-      script(script(readFileFromWorkspace('template_pipeline.groovy')))
+      script(readFileFromWorkspace('template_pipeline.groovy'))
       sandbox()     
     }
   }

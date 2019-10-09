@@ -1,4 +1,5 @@
- 
+pipeline {
+            agent any
                 stages {
                     stage('Stage 1') {
                         steps {
@@ -7,8 +8,9 @@
                     }
                     stage('Stage 2') {
                         steps {
-                            echo 'logic new new'
+                            echo 'logic2'
                         }
                     }
                 }
          
+        }
