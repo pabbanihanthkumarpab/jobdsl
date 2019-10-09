@@ -5,7 +5,7 @@
 
     def jsonSlurper = new JsonSlurper();
     println $WORKSPACE
-    def data = jsonSlurper.parseText(new File("${WORKSPACE}/data.json").text);
+    def data = jsonSlurper.parseText(new File("/var/jenkins_home/data.json").text);
        
     
     for (int i=0; i < data.size() ; i++ ){
