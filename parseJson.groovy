@@ -1,14 +1,13 @@
     import net.sf.json.groovy.JsonSlurper 
     import hudson.FilePath
     import hudson.*
-    import tools.JobStructure
+   
    
     def jsonSlurper = new JsonSlurper();
-    GroovyShell shell = new GroovyShell()
-    def js = new JobStructure() 
+
 //    def data = jsonSlurper.parseText(new File("/var/jenkins_home/data.json").text);
      def data = jsonSlurper.parseText(readFileFromWorkspace("data.json"));
-     println data;
+  
        
     
     for (int i=0; i < data.size() ; i++ ){
@@ -20,7 +19,7 @@
         def subProjects = subModules.split(',');
         for  ( int j = 0 ; j<subProjects.size() ; j++){  
 		 
-    		 js.createPipelineJob(projectName,subProjects.getAt(j),type);
+    		createPipelineJob(projectName,subProjects.getAt(j),type);
         }
         
     }
@@ -28,3 +27,37 @@
 	
 
 
+def createPipelineJob( def projectName , def subModuleName , def type){
+
+  println "projectName --> " + projectName;
+String basePath = 'CDAR-DEV/'+projectName+'/'+subModuleName;
+
+folder(basePath)
+
+
+pipelineJob("$basePath/pipeline-job") {
+  definition {
+    cps {
+      script('''
+        pipeline {
+            agent any
+                stages {
+                    stage('Stage 1') {
+                        steps {
+                            echo 'logic new'
+                        }
+                    }
+                    stage('Stage 2') {
+                        steps {
+                            echo 'logic2'
+                        }
+                    }
+                }
+         
+        }
+      '''.stripIndent())
+      sandbox()     
+    }
+  }
+}
+}
