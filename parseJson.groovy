@@ -5,8 +5,8 @@
    
     def jsonSlurper = new JsonSlurper();
 
-//    def data = jsonSlurper.parseText(new File("/var/jenkins_home/data.json").text);
-     def data = jsonSlurper.parseText(readFileFromWorkspace("data.json"));
+    def data = jsonSlurper.parseText(new File("/var/jenkins_home/data.json").text);
+  //   def data = jsonSlurper.parseText(readFileFromWorkspace("data.json"));
   
        
     
