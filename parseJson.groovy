@@ -1,4 +1,5 @@
-    import net.sf.json.groovy.JsonSlurper  
+    import net.sf.json.groovy.JsonSlurper 
+    import hudson.FilePath
 
     def jsonSlurper = new JsonSlurper();
     def data = jsonSlurper.parseText(new File("${workspace}/data.json").text);
