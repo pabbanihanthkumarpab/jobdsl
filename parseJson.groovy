@@ -1,5 +1,6 @@
     import net.sf.json.groovy.JsonSlurper 
     import hudson.FilePath
+    import hudson.*
 
 
     def jsonSlurper = new JsonSlurper();
