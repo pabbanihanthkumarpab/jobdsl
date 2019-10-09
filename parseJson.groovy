@@ -3,9 +3,7 @@
     import hudson.*
    
 
-   // evaluate(new File("pipelinejob.groovy"))
-    //evaluate(new File("./pipelinejob.groovy"))
-
+    def jobFun = Load 'pipelinejob.groovy'
     def jsonSlurper = new JsonSlurper();
 
 //    def data = jsonSlurper.parseText(new File("/var/jenkins_home/data.json").text);
@@ -22,7 +20,7 @@
   
         def subProjects = subModules.split(',');
         for  ( int j = 0 ; j<subProjects.size() ; j++){  
-		 def jobFun = load 'pipelinejob.groovy'
+		 
     		 jobFun.createPipelineJob(projectName,subProjects.getAt(j),type);
         }
         
