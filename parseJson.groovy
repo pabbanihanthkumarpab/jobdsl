@@ -1,7 +1,7 @@
     import net.sf.json.groovy.JsonSlurper 
     import hudson.FilePath
     import hudson.*
-    import pipelinejob.groovy
+    import pipelinejob
 
    // evaluate(new File("pipelinejob.groovy"))
     //evaluate(new File("./pipelinejob.groovy"))
