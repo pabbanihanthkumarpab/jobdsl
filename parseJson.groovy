@@ -6,7 +6,7 @@
     
     def jsonSlurper = new JsonSlurper();
     GroovyShell shell = new GroovyShell()
-    evaluate(new File("./pipelinejob.groovy"))
+    evaluate(new File("*.groovy"))
     
 
 //    def data = jsonSlurper.parseText(new File("/var/jenkins_home/data.json").text);
