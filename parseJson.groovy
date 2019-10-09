@@ -9,7 +9,9 @@
     def jsonSlurper = new JsonSlurper();
 
 //    def data = jsonSlurper.parseText(new File("/var/jenkins_home/data.json").text);
-     def data = jsonSlurper.parseText(readFileFromWorkspace("/var/jenkins_home/data.json").text);
+     def data = jsonSlurper.parseText(readFileFromWorkspace("/var/jenkins_home/data.json"));
+	    
+	    println data;
        
     
     for (int i=0; i < data.size() ; i++ ){
