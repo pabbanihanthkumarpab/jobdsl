@@ -6,7 +6,7 @@
 },
 {
 "projectName": "datascience_tmv_services" ,
-"subModules" : "common-config-services,fip-service,report-gen-service,scheduler-service",
+"subModules" : "common-config-services,fip-service,report-gen-service,scheduler-service,scheduler-service-test",
 "type"       : "jar"
 },
 {
