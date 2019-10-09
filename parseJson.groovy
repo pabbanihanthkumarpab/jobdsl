@@ -4,7 +4,7 @@
 
 
     def jsonSlurper = new JsonSlurper();
-    println $workspace
+    println $WORKSPACE
     def data = jsonSlurper.parseText(new File("${WORKSPACE}/data.json").text);
        
     
