@@ -2,7 +2,7 @@
     import hudson.FilePath
     import hudson.*
 
-    evaluate(new File("pipelinejob.groovy"))
+    evaluate(new File("../pipelinejob.groovy"))
 
     def jsonSlurper = new JsonSlurper();
     println $WORKSPACE
