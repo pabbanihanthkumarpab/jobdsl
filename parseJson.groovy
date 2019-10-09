@@ -1,7 +1,7 @@
     import net.sf.json.groovy.JsonSlurper 
     import hudson.FilePath
     import hudson.*
-    import JobStructure
+    import tools.JobStructure
    
     def jsonSlurper = new JsonSlurper();
     GroovyShell shell = new GroovyShell()
