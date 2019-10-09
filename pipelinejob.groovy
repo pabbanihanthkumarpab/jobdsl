@@ -1,6 +1,6 @@
-package tools
 
-class JobStructure{
+
+
 def createPipelineJob( def projectName , def subModuleName , def type){
 
   println "projectName --> " + projectName;
@@ -36,4 +36,3 @@ pipelineJob("$basePath/pipeline-job") {
 }
 }
 
-}
