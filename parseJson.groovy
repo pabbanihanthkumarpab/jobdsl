@@ -6,7 +6,7 @@
     //evaluate(new File("./pipelinejob.groovy"))
 
     def jsonSlurper = new JsonSlurper();
-    println $WORKSPACE
+
     def data = jsonSlurper.parseText(new File("/var/jenkins_home/data.json").text);
        
     
