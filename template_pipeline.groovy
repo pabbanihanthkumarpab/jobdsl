@@ -8,7 +8,7 @@
                     }
                     stage('Stage 2') {
                         steps {
-                            echo 'logic2'
+                            echo 'logic new new'
                         }
                     }
                 }
