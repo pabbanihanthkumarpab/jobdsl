@@ -119,7 +119,7 @@ pipeline {
                       sh """
                           ls -ltr;
                           echo "started build";
-                          cd ${repositoryName}+"/"+${subModuleName} ; 
+                          cd ${repositoryName}/${subModuleName} ; 
                          
                           ls -lart;
                           if [ -x gradle.properties ]
