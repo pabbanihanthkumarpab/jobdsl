@@ -36,6 +36,9 @@ folder(basePath)
 
 
 pipelineJob("$basePath/pipeline-job") {
+parameters {
+        stringParam('myParameterName', 'my default stringParam value', 'my description')
+ }
   definition {
     cps {
       script(readFileFromWorkspace('template_pipeline.groovy'))
