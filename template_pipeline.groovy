@@ -10,7 +10,7 @@ pipeline {
 
         _SCM_MASTER_BRANCH='master'
         _SCM_CODE_BRANCH="${params.branch_name}"
-        _SCM_REPO_URL='ssh://git@adlm.nielsen.com:7999/cm/datascience_tmv_services.git'
+        _SCM_REPO_URL='ssh://git@adlm.nielsen.com:7999/cm/'+ ${params.branch_name} +'.git'
         _SCM_BUILD_URL='ssh://git@adlm.nielsen.com:7999/cm/azure-automation-nonprod.git'
         //_SCM_CREDENTIALS_ID='87ba1f81-95e1-4ee0-b89a-e69f8b99cd70'
         _SCM_CREDENTIALS_ID='perfbuild-KEY'
