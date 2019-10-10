@@ -37,7 +37,11 @@ folder(basePath)
 
 pipelineJob("$basePath/pipeline-job") {
 parameters {
-        stringParam('myParameterName', 'my default stringParam value', 'my description')
+        stringParam('repositoryName', projectName, 'Repository Name')
+	stringParam('subModuleName',  subModuleName,  'Sub Module Name')
+	booleanParam('createRelease', false, 'Check to create release version')
+	stringParam('releaseVersion', '', 'Fill the Release version')
+	
  }
   definition {
     cps {
