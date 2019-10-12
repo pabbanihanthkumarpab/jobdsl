@@ -20,7 +20,7 @@
         for  ( int j = 0 ; j<subProjects.size() ; j++){  
 		 
     		createPipelineJob(projectName,subProjects.getAt(j),type);
-		//createDeploymentJob(projectName,subProjects.getAt(j),type);
+		createDeploymentJob(projectName,subProjects.getAt(j),type);
         }
         
     }
@@ -76,7 +76,7 @@ folder("CDAR-CI-CD/$projectName")
 folder(basePath)
 
 
-/*pipelineJob("$basePath/pipeline-job") {
+pipelineJob("$basePath/pipeline-job") {
 parameters {
         stringParam('repositoryName', projectName, 'Repository Name')
 	stringParam('subModuleName',  subModuleName,  'Sub Module Name')
@@ -90,5 +90,5 @@ parameters {
       sandbox()     
     }
   }
-}*/
+}
 }
