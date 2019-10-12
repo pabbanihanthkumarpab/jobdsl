@@ -1,17 +1,7 @@
 [
 {
-"projectName": "1bbo-exportprocessing" ,
-"subModules" : "rms-export-processor,rms-factory-output-delivery-processor,rms-factory-output-processor,rms-bbo-test",
-"type"       : "jar"
-},
-{
 "projectName": "datascience_tmv_services" ,
-"subModules" : "common-config-services,fip-service,report-gen-service,scheduler-service,scheduler-service-test",
-"type"       : "jar"
-},
-{
-"projectName": "GSR2.0" ,
-"subModules" : "gsr-bulkupload-service,gsr-characteristics-service,gsr-profile-service",
+"subModules" : "common-config-servicest",
 "type"       : "jar"
 }
 ]
