@@ -31,6 +31,7 @@
       println "projectName --> " + projectName;
       String basePath = 'CDAR-CICD/'+projectName+'/'+subModuleName;
       folder('CDAR-CI-CD')
+      folder("CDAR-CI-CD/$projectName")
       folder(basePath)
       
       job("$basePath/Deployment") {
@@ -71,7 +72,7 @@ def createPipelineJob( def projectName , def subModuleName , def type){
   println "projectName --> " + projectName;
 String basePath = 'CDAR-CI-CD/'+projectName+'/'+subModuleName;
 folder('CDAR-CI-CD')
-//folder("CDAR-CI-CD/$projectName")
+folder("CDAR-CI-CD/$projectName")
 folder(basePath)
 
 
