@@ -54,11 +54,12 @@
                              }
                    }
 	       }
-	      
-	      ant {
-                   target('Deploy_Service')        
-                   props('ssh_service_pwd': 'oi2l(3UWk', 'ssh_user': 'qabuild' , 'BuildHostServices' : 'dayrhecdad008.enterprisenet.org')
-                   buildFile('${workspace}/deployment-scripts/${repositoryName}/build/build.xml')
+	      steps { 
+	         ant {
+                     target('Deploy_Service')        
+                     props('ssh_service_pwd': 'oi2l(3UWk', 'ssh_user': 'qabuild' , 'BuildHostServices' : 'dayrhecdad008.enterprisenet.org')
+                     buildFile('${workspace}/deployment-scripts/${repositoryName}/build/build.xml')
+	         }
 	      }
             
         }
