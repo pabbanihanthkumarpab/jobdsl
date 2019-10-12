@@ -5,7 +5,7 @@
    
     def jsonSlurper = new JsonSlurper();
 
-  //  def data = jsonSlurper.parseText(new File("/var/jenkins_home/data.json").text);
+  
     def data = jsonSlurper.parseText(readFileFromWorkspace("data.json"));
   
        
@@ -19,7 +19,7 @@
         def subProjects = subModules.split(',');
         for  ( int j = 0 ; j<subProjects.size() ; j++){  
 		 
-    		//createPipelineJob(projectName,subProjects.getAt(j),type);
+    		createPipelineJob(projectName,subProjects.getAt(j),type);
 		createDeploymentJob(projectName,subProjects.getAt(j),type);
         }
         
