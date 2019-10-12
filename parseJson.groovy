@@ -46,7 +46,7 @@
                 git {
                   remote {
                            url('ssh://git@adlm.nielsen.com:7999/cm/azure-automation-nonprod.git')
-			   credentials('uatbuild')
+			   credentials('87ba1f81-95e1-4ee0-b89a-e69f8b99cd70')
                          }
 			
 	           branches('*/master')		
