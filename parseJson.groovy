@@ -39,6 +39,7 @@
            } 
 	   environmentVariables {
               envs(projectName: projectName, subModuleName: subModuleName , ssh_user_name: 'docker')
+	      propertiesFile('deployment-scripts/Datascience_TMV_Services/props/d2o.$env.properties')	   
            }
          
 	     
