@@ -19,13 +19,25 @@
         def subProjects = subModules.split(',');
         for  ( int j = 0 ; j<subProjects.size() ; j++){  
 		 
-    		createPipelineJob(projectName,subProjects.getAt(j),type);
+    		//createPipelineJob(projectName,subProjects.getAt(j),type);
+		createDeploymentJob(projectName,subProjects.getAt(j),type);
         }
         
     }
 	
 	
 
+ def createDeploymentJob (def projectName , def subModuleName , def type){
+      println "projectName --> " + projectName;
+      String basePath = 'CDAR-DEV/'+projectName+'/'+subModuleName;
+      folder(basePath)
+      parameters {
+        stringParam('environment', 'DEV', 'Name of the environemt that to be deployed DEV/UAT1/UAT3')
+	stringParam('version', '0.0.1-SNAPSHOT', 'version of the docker image that to be deployed')
+      } 
+      environmentVariables(projectName: projectName, subModuleName: subModuleName , ssh_user_name: 'docker' )
+	
+}
 
 def createPipelineJob( def projectName , def subModuleName , def type){
 
