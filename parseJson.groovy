@@ -20,7 +20,7 @@
         for  ( int j = 0 ; j<subProjects.size() ; j++){  
 		 
     		createPipelineJob(projectName,subProjects.getAt(j),type);
-		createDeploymentJob(projectName,subProjects.getAt(j),type);
+		//createDeploymentJob(projectName,subProjects.getAt(j),type);
         }
         
     }
@@ -72,11 +72,11 @@ def createPipelineJob( def projectName , def subModuleName , def type){
   println "projectName --> " + projectName;
 String basePath = 'CDAR-CI-CD/'+projectName+'/'+subModuleName;
 folder('CDAR-CI-CD')
-folder("CDAR-CI-CD/$projectName")
-folder(basePath)
+//folder("CDAR-CI-CD/$projectName")
+//folder(basePath)
 
 
-pipelineJob("$basePath/pipeline-job") {
+/*pipelineJob("$basePath/pipeline-job") {
 parameters {
         stringParam('repositoryName', projectName, 'Repository Name')
 	stringParam('subModuleName',  subModuleName,  'Sub Module Name')
@@ -90,5 +90,5 @@ parameters {
       sandbox()     
     }
   }
-}
+}*/
 }
