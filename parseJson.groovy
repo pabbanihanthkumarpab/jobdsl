@@ -56,6 +56,7 @@
                              }
                    }
 	       }
+	       environmentVariables(repositoryName: projectName , subModuleName: subModuleName)
 	      steps { 
 	         ant {
                      target('Deploy_Service')        
