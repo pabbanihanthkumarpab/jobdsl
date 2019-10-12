@@ -63,7 +63,6 @@
             
         }
      }
-}
 
 def createPipelineJob( def projectName , def subModuleName , def type){
 
