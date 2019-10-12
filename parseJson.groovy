@@ -38,8 +38,7 @@
            parameters {
              stringParam('environment', 'DEV', 'Name of the environemt that to be deployed DEV/UAT1/UAT3')
 	     stringParam('version', '0.0.1-SNAPSHOT', 'version of the docker image that to be deployed')
-             stringParam('repositoryName',  projectName , '')
-	     stringParam('subModuleName', subModuleName , '')
+
            } 
 	 
 	      scm {
