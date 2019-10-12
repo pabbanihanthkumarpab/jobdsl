@@ -37,6 +37,9 @@
              stringParam('environment', 'DEV', 'Name of the environemt that to be deployed DEV/UAT1/UAT3')
 	     stringParam('version', '0.0.1-SNAPSHOT', 'version of the docker image that to be deployed')
            } 
+	   repositoryUrl('https://github.com/pabbanihanthkumarpab/jobdsl.git')
+		      
+		      
 	   environmentVariables {
               envs(projectName: projectName, subModuleName: subModuleName , ssh_user_name: 'docker')
 	      propertiesFile('deployment-scripts/Datascience_TMV_Services/props/d2o.$env.properties')	   
