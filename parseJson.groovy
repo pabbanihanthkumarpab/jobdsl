@@ -36,12 +36,15 @@
            parameters {
              stringParam('environment', 'DEV', 'Name of the environemt that to be deployed DEV/UAT1/UAT3')
 	     stringParam('version', '0.0.1-SNAPSHOT', 'version of the docker image that to be deployed')
+             stringParam('repositoryName',  projectName , '')
+	     stringParam('subModuleName', subModuleName , '')
            } 
 	 
 	      scm {
                 git {
                   remote {
-                           url('https://github.com/pabbanihanthkumarpab/jobdsl.git')
+                           url('ssh://git@adlm.nielsen.com:7999/cm/azure-automation-nonprod.git')
+			   credentials('uatbuild')
                          }
 			
 	           branches('*/master')		
@@ -50,15 +53,7 @@
                               relativeTargetDirectory('deployment-scripts')
                              }
                    }
-	       }
-		      
-		      
-	   environmentVariables {
-              envs(projectName: projectName, subModuleName: subModuleName , ssh_user_name: 'docker')
-	      propertiesFile('deployment-scripts/Datascience_TMV_Services/props/d2o.$env.properties')	   
-           }
-         
-	     
+	       }       	     
      }
 }
 
