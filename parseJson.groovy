@@ -44,7 +44,7 @@
                            url('https://github.com/pabbanihanthkumarpab/jobdsl.git')
                          }
 			
-	           branches('master')		
+	           branches('*/master')		
                  
                   extensions {
                               relativeTargetDirectory('deployment-scripts')
