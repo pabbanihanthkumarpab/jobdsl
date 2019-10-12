@@ -1,7 +1,7 @@
 [
 {
 "projectName": "datascience_tmv_services" ,
-"subModules" : "common-config-servicest",
+"subModules" : "common-config-services",
 "type"       : "jar"
 }
 ]
