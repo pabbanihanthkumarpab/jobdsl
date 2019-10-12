@@ -29,7 +29,8 @@
 
  def createDeploymentJob (def projectName , def subModuleName , def type){
       println "projectName --> " + projectName;
-      String basePath = 'CDAR-DEV/'+projectName+'/'+subModuleName;
+      String basePath = 'CDAR-CICD/'+projectName+'/'+subModuleName;
+      folder('CDAR-CI-CD')
       folder(basePath)
       
       job("$basePath/Deployment") {
@@ -68,8 +69,9 @@
 def createPipelineJob( def projectName , def subModuleName , def type){
 
   println "projectName --> " + projectName;
-String basePath = 'CDAR-DEV/'+projectName+'/'+subModuleName;
-
+String basePath = 'CDAR-CI-CD/'+projectName+'/'+subModuleName;
+folder('CDAR-CI-CD')
+//folder("CDAR-CI-CD/$projectName")
 folder(basePath)
 
 
