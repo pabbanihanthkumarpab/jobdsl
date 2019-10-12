@@ -43,6 +43,8 @@
                   remote {
                            url('https://github.com/pabbanihanthkumarpab/jobdsl.git')
                          }
+			
+	           branches('master')		
                  
                   extensions {
                               relativeTargetDirectory('deployment-scripts')
