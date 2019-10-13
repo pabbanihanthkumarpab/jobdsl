@@ -10,9 +10,9 @@ pipeline {
 
         _SCM_MASTER_BRANCH='master'
         _SCM_CODE_BRANCH="${params.branch_name}"
-        _SCM_REPO_URL='ssh://git@adlm.nielsen.com:7999/cm/'+ ${params.repositoryName} +'.git'
+        _SCM_REPO_URL='ssh://git@adlm.nielsen.com:7999/cm/datascience_tmv_services.git'
         _SCM_BUILD_URL='ssh://git@adlm.nielsen.com:7999/cm/azure-automation-nonprod.git'
-        
+        //_SCM_CREDENTIALS_ID='87ba1f81-95e1-4ee0-b89a-e69f8b99cd70'
         _SCM_CREDENTIALS_ID='perfbuild-KEY'
         _SCM_CREDENTIALS_USER=''                    // To be programatically setup
         _SCM_CREDENTIALS_KEY=''                     // To be programatically setup
@@ -20,23 +20,24 @@ pipeline {
         
         _AUTOBUILD_FOLDER='master'
         _DOCKERBUILD_FOLDER='dockerBuild'
-	 _BUILD_XML_FOLDER="${_DOCKERBUILD_FOLDER}/" + ${params.repositoryName}
+       // _BUILD_XML_FOLDER="${_DOCKERBUILD_FOLDER}/deployjob/PIPELINE/"
+        _BUILD_XML_FOLDER="${_DOCKERBUILD_FOLDER}/Datascience_TMV_Services/build/"
         _BUILD_VERSION=''
         _JAR_QUALIFIER='exec' // ---> what is this?
         _JAR_CONFIG_BASENAME='common-config-services'
         
         _JAR_CONFIG=''
-       
-        _JAR_BASE_FOLDER="${_AUTOBUILD_FOLDER}/" + ${params.repositoryName}
-        _JAR_FOLDER_COMMON_CFG="${_JAR_BASE_FOLDER}/" +  ${params.subModuleName}+ "/build/libs"
+        _IMAGE_NAME="buycdarcreg.azurecr.io/cdar/datascience_tmv/common-config"
+        _JAR_BASE_FOLDER="${_AUTOBUILD_FOLDER}/datascience_tmv_services"
+        _JAR_FOLDER_COMMON_CFG="${_JAR_BASE_FOLDER}/common-config-services/build/libs"
         _BUILD_SERVER_CREDENTIALS_ID='qabuild'
         _BUILD_SERVER_CREDENTIALS_USERNAME=''       // To be programatically setup
         _BUILD_SERVER_CREDENTIALS_PASSWORD=''       // To be programatically setup
 
-       /* _ARTIFACTORY_SERVER='ADLM_Artifactory'
+        _ARTIFACTORY_SERVER='ADLM_Artifactory'
         _ARTIFACTORY_REPO=''
         _SNAPSHOT_REPO='CDAR_datascience_tmv_services_Snapshot'
-        _RELEASE_REPO='CDAR_datascience_tmv_services_Release'*/
+        _RELEASE_REPO='CDAR_datascience_tmv_services_Release'
         
         boolean testPassed = true
     }
@@ -87,7 +88,7 @@ pipeline {
                 dir ("${_AUTOBUILD_FOLDER}") {
                     //git branch: "${_SCM_CODE_BRANCH}", credentialsId: "${_SCM_CREDENTIALS_ID}", url: "${_SCM_REPO_URL}"
                     sshagent(['perfbuild-KEY']) {
-                        sh 'git clone "${_SCM_REPO_URL}";cd "${repositoryName}";git checkout "${branch_name}"'
+                        sh 'git clone "${_SCM_REPO_URL}";cd datascience_tmv_services;git checkout "${branch_name}"'
                     }
                 }
                 dir ("${_DOCKERBUILD_FOLDER}") {
@@ -119,8 +120,8 @@ pipeline {
                       sh """
                           ls -ltr;
                           echo "started build";
-                          cd ${repositoryName}/${subModuleName} ; 
-                         
+                          cd datascience_tmv_services ; 
+                          cd common-config-services ;
                           ls -lart;
                           if [ -x gradle.properties ]
                           then
@@ -157,8 +158,10 @@ pipeline {
                     }
                 
                     else{
-                        sh "ls -lrt; cd ${repositoryName}/${subModuleName} ;chmod -R 755 *;./gradlew clean build ;ls -lart;"
-                        _BUILD_VERSION = sh (script: 'cat${repositoryName}/${subModuleName}/gradle.properties | cut -d= -f 2', returnStdout: true).trim()
+                        sh "ls -lrt;cd datascience_tmv_services/common-config-services; chmod -R 755 *;./gradlew clean build -x test;ls -lart;"
+                        _BUILD_VERSION = sh (script: ' cat datascience_tmv_services/common-config-services/gradle.properties | cut -d= -f 2', returnStdout: true).trim()
+                    
+                        sh "ls -ltr ; echo 'Build ver is'$_BUILD_VERSION ; echo 'build version image ::: ' ${_IMAGE_NAME} " 
                     }
                     
                     _JAR_CFG = "${_JAR_CONFIG_BASENAME}-${_BUILD_VERSION}-${_JAR_QUALIFIER}" 
@@ -182,6 +185,7 @@ pipeline {
             }
             steps {
                 echo "Building and pushing docker images..."
+                sh "ls"
                 
                 withAnt(installation: "${_ANT}") {
                     withCredentials ([usernamePassword(
@@ -190,6 +194,7 @@ pipeline {
                         passwordVariable: '_BUILD_SERVER_CREDENTIALS_PASSWORD')])
                     {
                         dir("${_BUILD_XML_FOLDER}") {
+                            sh "ls"
                             sh "echo ${_BUILD_VERSION}>build_version;cat build_version"
                             sh 'ant -Dtag="${_BUILD_VERSION}" Build_Docker'
                         }
