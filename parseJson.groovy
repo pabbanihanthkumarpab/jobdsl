@@ -69,7 +69,7 @@
 	         ant {
                      target('Deploy_Service')        
                      props('env_pass' : '"ssh_${environment}_password"' , 'ssh_service_pwd' : '"${!env_pass}"' , 'ssh_user' : 'docker' , 'repositoryName' : '$repositoryName' , 'subModuleName' : '$subModuleName' , 'env' : '$environment' , 'version' : '$version')
-                     buildFile('${workspace}/deployment-scripts/${repositoryName}/build/build.xml')
+                     buildFile('${workspace}/deployment-scripts/common-scripts/build.xml')
 	         }
 	      }
             
