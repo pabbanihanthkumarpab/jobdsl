@@ -64,6 +64,7 @@
 	      steps { 
 		   envInjectBuilder {
                          propertiesFilePath('${workspace}/deployment-scripts/common-scripts/common-env.properties')
+			 propertiesContent('')
                       } 
 	         ant {
                      target('Deploy_Service')        
