@@ -55,7 +55,10 @@
                              }
                    }
 	       }
-	       environmentVariables(repositoryName: projectName , subModuleName: subModuleName)
+	      environmentVariables(repositoryName: projectName , subModuleName: subModuleName)
+	      environmentVariables{
+		propertiesFile('${workspace}/deployment-scripts/common-scriptss/common-env.properties')      
+	      }
 	      steps { 
 	         ant {
                      target('Deploy_Service')        
