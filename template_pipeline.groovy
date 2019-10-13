@@ -22,7 +22,7 @@ pipeline {
 	    _IMAGE_NAME='buycdarcreg.azurecr.io/cdar/'+  "${params.repositoryName}" + '/' +  "${params.subModuleName}" 
         _AUTOBUILD_FOLDER='master'
         _DOCKERBUILD_FOLDER='dockerBuild'
-        _BUILD_XML_FOLDER="${_DOCKERBUILD_FOLDER}/" + "${params.repositoryName}" + '/build/'
+        _BUILD_XML_FOLDER="${_DOCKERBUILD_FOLDER}/common-scripts"
         _BUILD_VERSION=''
         _JAR_QUALIFIER='exec' // ---> what is this?
         _JAR_CONFIG_BASENAME='common-config-services'
@@ -192,7 +192,7 @@ pipeline {
                         passwordVariable: '_BUILD_SERVER_CREDENTIALS_PASSWORD')])
                     {
                         dir("${_BUILD_XML_FOLDER}") {
-                            sh "echo ${_BUILD_VERSION}>build_version;cat build_version"
+                            //sh "echo ${_BUILD_VERSION}>build_version;cat build_version"
                             sh 'ant -Dtag="${_BUILD_VERSION}" Build_Docker'
                         }
                     }
