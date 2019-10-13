@@ -55,9 +55,11 @@
                              }
                    }
 	       }
-	      environmentVariables(repositoryName: projectName , subModuleName: subModuleName)
+	     
 	      environmentVariables{
-		propertiesFile('${workspace}/deployment-scripts/common-scriptss/common-env.properties')      
+		env('repositoryName', projectName)
+	        env('subModuleName', subModuleName)	      
+		propertiesFile('${workspace}/deployment-scripts/common-scripts/common-env.properties')      
 	      }
 	      steps { 
 	         ant {
