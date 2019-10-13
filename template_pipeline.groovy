@@ -10,25 +10,27 @@ pipeline {
 
         _SCM_MASTER_BRANCH='master'
         _SCM_CODE_BRANCH="${params.branch_name}"
-        _SCM_REPO_URL='ssh://git@adlm.nielsen.com:7999/cm/'+ ${params.repositoryName} +'.git'
+        _SCM_REPO_NAME="${params.repositoryName}"
+        _SCM_SUB_MODULE_NAME="${params.subModuleName}"
+        _SCM_REPO_URL='ssh://git@adlm.nielsen.com:7999/cm/'+"${_SCM_REPO_NAME}" +'.git'
         _SCM_BUILD_URL='ssh://git@adlm.nielsen.com:7999/cm/azure-automation-nonprod.git'
         
         _SCM_CREDENTIALS_ID='perfbuild-KEY'
         _SCM_CREDENTIALS_USER=''                    // To be programatically setup
         _SCM_CREDENTIALS_KEY=''                     // To be programatically setup
 
-	_IMAGE_NAME='buycdarcreg.azurecr.io/cdar/'+  ${params.repositoryName} + '/' +  ${params.subModuleName} 
+	    _IMAGE_NAME='buycdarcreg.azurecr.io/cdar/'+  "${params.repositoryName}" + '/' +  "${params.subModuleName}" 
         _AUTOBUILD_FOLDER='master'
         _DOCKERBUILD_FOLDER='dockerBuild'
-        _BUILD_XML_FOLDER="${_DOCKERBUILD_FOLDER}/" + ${params.repositoryName} + '/build/'
+        _BUILD_XML_FOLDER="${_DOCKERBUILD_FOLDER}/" + "${params.repositoryName}" + '/build/'
         _BUILD_VERSION=''
         _JAR_QUALIFIER='exec' // ---> what is this?
         _JAR_CONFIG_BASENAME='common-config-services'
         
         _JAR_CONFIG=''
        
-        _JAR_BASE_FOLDER="${_AUTOBUILD_FOLDER}/" + ${params.repositoryName}
-        _JAR_FOLDER_COMMON_CFG="${_JAR_BASE_FOLDER}/" +  ${params.subModuleName}+ "/build/libs"
+        _JAR_BASE_FOLDER="${_AUTOBUILD_FOLDER}/" + "${params.repositoryName}"
+        _JAR_FOLDER_COMMON_CFG="${_JAR_BASE_FOLDER}/" +  "${params.subModuleName}"+ "/build/libs"
         _BUILD_SERVER_CREDENTIALS_ID='qabuild'
         _BUILD_SERVER_CREDENTIALS_USERNAME=''       // To be programatically setup
         _BUILD_SERVER_CREDENTIALS_PASSWORD=''       // To be programatically setup
@@ -157,7 +159,7 @@ pipeline {
                     }
                 
                     else{
-                        sh "ls -lrt; cd ${repositoryName}/${subModuleName} ;chmod -R 755 *;./gradlew clean build ;ls -lart;"
+                        sh "ls -lrt; cd ${repositoryName}/${subModuleName} ;chmod -R 755 *;./gradlew clean build -x test;ls -lart;"
                         _BUILD_VERSION = sh (script: 'cat ${repositoryName}/${subModuleName}/gradle.properties | cut -d= -f 2', returnStdout: true).trim()
                     }
                     
