@@ -193,7 +193,7 @@ pipeline {
                     {
                         dir("${_BUILD_XML_FOLDER}") {
                             //sh "echo ${_BUILD_VERSION}>build_version;cat build_version"
-                            sh 'ant -Dtag="${_BUILD_VERSION}" Build_Docker'
+                            sh 'ant -Dtag="${_BUILD_VERSION}" Build_N_Push_Docker_Image'
                         }
                     }
                 }
