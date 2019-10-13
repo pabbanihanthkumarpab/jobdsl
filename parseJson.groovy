@@ -63,7 +63,7 @@
 	      }
 	      steps { 
 		   envInjectBuilder {
-                         propertiesFilePath('${workspace}/deployment-scripts/common-scripts/common-env.properties')
+                         propertiesFilePath('deployment-scripts/common-scripts/common-env.properties')
 			 propertiesContent('')
                       } 
 	         ant {
