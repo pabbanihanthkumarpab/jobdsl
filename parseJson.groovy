@@ -68,7 +68,7 @@
                       } 
 	         ant {
                      target('Deploy_Service')        
-                     props('ssh_service_pwd': 'oi2l(3UWk', 'ssh_user': 'qabuild' , 'BuildHostServices' : 'dayrhecdad008.enterprisenet.org')
+                     props('env_pass' : '"ssh_${environment}_password"' , 'ssh_service_pwd' : '"${!env_pass}"' , 'ssh_user' : 'docker')
                      buildFile('${workspace}/deployment-scripts/${repositoryName}/build/build.xml')
 	         }
 	      }
