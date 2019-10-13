@@ -59,9 +59,12 @@
 	      environmentVariables{
 		env('repositoryName', projectName)
 	        env('subModuleName', subModuleName)	      
-		propertiesFile('${workspace}/deployment-scripts/common-scripts/common-env.properties')      
+		//propertiesFile('${workspace}/deployment-scripts/common-scripts/common-env.properties')      
 	      }
 	      steps { 
+		   envInjectBuilder {
+                         propertiesFilePath('${workspace}/deployment-scripts/common-scripts/common-env.properties')
+                      } 
 	         ant {
                      target('Deploy_Service')        
                      props('ssh_service_pwd': 'oi2l(3UWk', 'ssh_user': 'qabuild' , 'BuildHostServices' : 'dayrhecdad008.enterprisenet.org')
