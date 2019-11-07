@@ -3,5 +3,10 @@
 "projectName": "datascience_tmv_services" ,
 "subModules" : "common-config-services",
 "type"       : "jar"
-}
+},
+{
+"projectName": "1bbo-nso-postcollection" ,
+"subModules" : "lookup-processor",
+"type"       : "jar"
+}  
 ]
