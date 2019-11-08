@@ -88,6 +88,7 @@ folder(basePath)
 
 pipelineJob("$basePath/pipeline-job") {
 parameters {
+	stringParam('branch_name', '', 'Branch Name')
         stringParam('repositoryName', projectName, 'Repository Name')
 	stringParam('subModuleName',  subModuleName,  'Sub Module Name')
 	booleanParam('createRelease', false, 'Check to create release version')
