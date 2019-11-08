@@ -8,5 +8,15 @@
 "projectName": "1bbo-nso-postcollection" ,
 "subModules" : "lookup-processor",
 "type"       : "jar"
-}  
+},
+{
+"projectName": "1bbo-nso-postcollection" ,
+"subModules" : "factory-output-delivery-processor",
+"type"       : "jar"
+},
+{
+"projectName": "1bbo-nso-postcollection" ,
+"subModules" : "collection-processor",
+"type"       : "jar"
+}    
 ]
