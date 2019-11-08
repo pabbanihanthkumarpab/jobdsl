@@ -159,7 +159,7 @@ pipeline {
                     }
                 
                     else{
-                        sh "ls -lrt; cd ${repositoryName}/${subModuleName} ;chmod -R 755 *;./gradlew clean build -x test;ls -lart;"
+                        sh "ls -lrt; chmod -R 755 *;./gradlew ${subModuleName} clean build ;ls -lart;"
                         _BUILD_VERSION = sh (script: 'cat ${repositoryName}/${subModuleName}/gradle.properties | cut -d= -f 2', returnStdout: true).trim()
                     }
                     
