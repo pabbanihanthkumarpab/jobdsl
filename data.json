@@ -18,5 +18,10 @@
 "projectName": "1bbo-nso-postcollection" ,
 "subModules" : "collection-processor",
 "type"       : "jar"
-}    
+},
+{
+"projectName": "adcb" ,
+"subModules" : "adcb-dashboard-service",
+"type"       : "jar"
+}      
 ]
