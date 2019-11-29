@@ -23,5 +23,10 @@
 "projectName": "adcb" ,
 "subModules" : "adcb-dashboard-service",
 "type"       : "jar"
+},
+{
+"projectName": "datascience_d2o-services" ,
+"subModules" : "cdar-d2o-export-params-service",
+"type"       : "jar"
 }      
 ]
