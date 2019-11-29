@@ -40,6 +40,7 @@
 	     stringParam('version', '0.0.1-SNAPSHOT', 'version of the docker image that to be deployed')
 
            } 
+	   label('master')
 	 
 	      scm {
                 git {
